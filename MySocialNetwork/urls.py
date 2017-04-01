@@ -22,14 +22,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # url(r'^test/$', test),
-
     # url(r'^posts/(\d+)/$', test),
     # url(r'^blogs/(?P<blog_id>\d+)/(?P<post_id>\d+)$', test),# Named argument.
-
     # url(r'^posts/(?P<post_id>\d+)/$', test),  # Named argument.
 
-    url(r'^core/', include('core.urls')),
-    url(r'^blogs/', include('blogs.urls')),
-    url(r'^posts/', include('posts.urls')),
-    url(r'^comments/', include('comments.urls')),
+    url(r'^core/', include('core.urls', namespace="core")),
+    url(r'^blogs/', include('blogs.urls', namespace="blogs")),
+    url(r'^posts/', include('posts.urls', namespace="posts")),
+    url(r'^comments/', include('comments.urls', namespace="comments")),
 ]

@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 
 {% block body %}
-    <h5><a href="/blogs/">Back to all blogs.</a></h5>
+    <h5><a href="{% url "blogs:show_all_blogs" %}">Back to all blogs.</a></h5>
     <h2> Blog {{ blog.title }}</h2>
     <h3>Description of the {{ blog.title }}: </h3>
     <p>{{ blog.description }}</p> <br/>
