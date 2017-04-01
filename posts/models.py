@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
@@ -15,5 +16,5 @@ class Post(MyAbstractModel):
     blog_owner = models.ForeignKey(Blog, default=None)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 

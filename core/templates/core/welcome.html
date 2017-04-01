@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block body %}
+    <h2>Welcome to this mini forum.</h2>
+    <list>
+        <li>Totalling blogs {{ blogs_num }}</li>
+        <li>Totalling posts {{ posts_num }}</li>
+        <li>Totalling comments {{ comments_num }}</li>
+    </list>
+    <h3><a href="{% url "blogs:show_all_blogs" %}">Go to all blogs we have :)</a></h3>
+{% endblock %}
+
+BloBlo

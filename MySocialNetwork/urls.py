@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from core.views import test
+from core.views import test, show_welcome_page
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,7 +25,7 @@ urlpatterns = [
     # url(r'^posts/(\d+)/$', test),
     # url(r'^blogs/(?P<blog_id>\d+)/(?P<post_id>\d+)$', test),# Named argument.
     # url(r'^posts/(?P<post_id>\d+)/$', test),  # Named argument.
-
+    url(r'$^', show_welcome_page),
     url(r'^core/', include('core.urls', namespace="core")),
     url(r'^blogs/', include('blogs.urls', namespace="blogs")),
     url(r'^posts/', include('posts.urls', namespace="posts")),
