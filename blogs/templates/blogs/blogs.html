@@ -2,7 +2,7 @@
 
 {% block body %}
     <h2> Here there are all blogs: </h2>
-    {% for blog in all_blogs_list %}
-        <b>{{ blog.id }}</b> <a href="{% url "blogs:show_blog_by_id" blog_id=blog.id %}">{{ blog.title }}</a><br/>
+    {% for blog in object_list %}
+        <b>{{ blog.id }}</b> <a href="{% url "blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a><br/>
     {% endfor %}
 {% endblock %}

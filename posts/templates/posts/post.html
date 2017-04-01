@@ -1,13 +1,13 @@
 {% extends "core/base.html" %}
 
 {% block body %}
-    <h5><a href="{% url "blogs:show_blog_by_id" blog_id=object.blog_owner_id %}">Back to blog</a></h5>
-    <h2> Post {{ post.title }} in blog "BLABLA"</h2>
-    <p>{{ post.text }}</p> <br/>
+    <h5><a href="{% url "blogs:show_blog_by_id" pk=object.blog_owner_id %}">Back to blog</a></h5>
+    <h2> Post {{ object.title }} in blog "BLABLA"</h2>
+    <p>{{ object.text }}</p> <br/>
     <h2>Comments ({{ object.comment_set.count }}):</h2>
     {% if object.comment_set %}
         {% for comment in object.comment_set.all %}
-            <b>Comment #<i>{{ forloop.counter }}.</i> Author : {{ post.author }}</b>
+            <b>Comment #<i>{{ forloop.counter }}.</i> Author : {{ comment.author }}</b>
             <p style="margin-left: 40px">{{ comment.text }}</p> <br/>
         {% endfor %}
     {% else %}

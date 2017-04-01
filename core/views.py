@@ -1,7 +1,5 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
 from blogs.models import Blog
 from comments.models import Comment
 from posts.models import Post
