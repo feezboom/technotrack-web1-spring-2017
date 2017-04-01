@@ -7,4 +7,5 @@ from core.models import MyAbstractModel
 
 class Comment(MyAbstractModel):
 
-    pass
+    def __str__(self):
+        return "Author : " + self.author

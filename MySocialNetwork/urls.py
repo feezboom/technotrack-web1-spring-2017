@@ -28,5 +28,8 @@ urlpatterns = [
 
     # url(r'^posts/(?P<post_id>\d+)/$', test),  # Named argument.
 
-    url(r'^core/', include('core.urls'))
+    url(r'^core/', include('core.urls')),
+    url(r'^blogs/', include('blogs.urls')),
+    url(r'^posts/', include('posts.urls')),
+    url(r'^comments/', include('comments.urls')),
 ]
