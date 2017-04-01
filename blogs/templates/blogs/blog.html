@@ -5,4 +5,16 @@
     <h2> Blog {{ blog.title }}</h2>
     <h3>Description of the {{ blog.title }}: </h3>
     <p>{{ blog.description }}</p> <br/>
+    <h2>Posts of this blog:</h2>
+    {% if posts %}
+        {% for post in posts %}
+            <i>{{ forloop.counter }}. </i>
+            <b>
+                <a href="{% url "posts:post_by_id" post_id=post.id %}">
+                    {{ post.title }}
+                </a> Author : {{ post.author }}
+            </b>
+            <br/>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

@@ -1,0 +1,5 @@
+{% block body %}
+    {% for post in posts %}
+        <a href="{% url "posts:post_by_id" post_id=post.id %}"> {{ post.title }}. Author : {{ post.author }}</a>
+    {% endfor %}
+{% endblock %}
