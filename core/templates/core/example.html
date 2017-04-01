@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %} Example.html title! {% endblock %}
+
+{% block body %}
+    <div style="color: green;">Test passed & {{ comment_id | default:"no commentId passed" }} </div>
+    <div>PostId == {{ post_id | default_if_none:"postId is none" }}, BlogId == {{ blog_id }}</div>
+    <br> <b>Post titles: </b> <br>
+    {% include "core/exampleList.html" with values=posts_titles %}
+{%  endblock %}
+

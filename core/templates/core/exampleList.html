@@ -1,0 +1,4 @@
+{% for value in values %}
+    {% if value == "second post" %} It is the second post, mfk! {% endif %}
+    <br/><i>{{ forloop.counter }}</i> {{ value | slice:":5" }}<br/>
+{% endfor %}
