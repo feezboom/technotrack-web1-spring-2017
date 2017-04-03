@@ -49,6 +49,3 @@ class BlogsList(ListView):
 class BlogView(DetailView):
     queryset = Blog.objects.all()
     template_name = "blogs/blog.html"
-
-
-

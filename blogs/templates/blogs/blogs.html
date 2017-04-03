@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load widget_tweaks %}
 
 {% block body %}
     <h2> Here there are all blogs: </h2>
@@ -10,7 +11,7 @@
 
     <div class="auth">
         <form method="get" action="{% url "blogs:show_all_blogs" %}">
-            {{ sort_form.sort }}
+            {{ sort_form.sort | add_class:"myinput" }}
             <input type="submit"> <br/>
             {{ sort_form.sort.label_tag }} {{ sort_form.search }}
             <input type="submit">
