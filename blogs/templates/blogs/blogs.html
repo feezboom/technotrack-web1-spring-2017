@@ -5,4 +5,15 @@
     {% for blog in object_list %}
         <b>{{ blog.id }}</b> <a href="{% url "blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a><br/>
     {% endfor %}
+
+    <h2>-----------------------------------------------------</h2>
+
+    <div class="auth">
+        <form method="get" action="{% url "blogs:show_all_blogs" %}">
+            {{ sort_form.sort }}
+            <input type="submit"> <br/>
+            {{ sort_form.sort.label_tag }} {{ sort_form.search }}
+            <input type="submit">
+        </form>
+    </div>
 {% endblock %}
