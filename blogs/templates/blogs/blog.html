@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 
 {% block body %}
-    <h5><a href="{% url "blogs:show_all_blogs" %}">Back to all blogs.</a></h5>
+    <h5><a href="{% url "core:blogs:show_all_blogs" %}">Back to all blogs.</a></h5>
     <h2> Blog {{ object.title }}</h2>
     <h3>Description of the {{ object.title }}: </h3>
     <p>{{ object.description }}</p>
@@ -10,7 +10,7 @@
         {% for post in object.post_set.all %}
             <i>{{ forloop.counter }}. </i>
             <b>
-                <a href="{% url "posts:show_post_by_id" pk=post.id %}">
+                <a href="{% url "core:posts:show_post_by_id" pk=post.id %}">
                     {{ post.title }}
                 </a>
                 Author : {{ post.author }}
