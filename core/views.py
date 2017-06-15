@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render
 
 from blogs.models import Blog
@@ -35,3 +36,8 @@ def test(request, post_id=None, blog_id=None, *args, **kwargs):
     return render(request, 'core/example.html', {"post_id": post_id,
                                                  "blog_id": blog_id,
                                                  "posts_titles": posts_titles})
+
+
+class AuthorizationForm(forms.Form):
+    login = forms.TextInput()
+    password = forms.PasswordInput()
