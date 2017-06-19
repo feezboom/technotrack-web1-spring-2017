@@ -7,6 +7,9 @@
 </head>
 
 <body>
+    {% if user.is_authenticated %}
+        You are logged as a {{ user }}.&nbsp<a href="{% url "core:auth_logout" %}">Logout.</a>
+    {% endif %}
     {% block content %}{% endblock %}
     <h5><a href="{% url "core:blogs:show_all_blogs" %}">Go to welcome page.</a></h5>
 </body>

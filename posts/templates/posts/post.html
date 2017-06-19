@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 
-{% block body %}
+{% block content %}
     <h5><a href="{% url "core:blogs:show_blog_by_id" pk=object.blog_owner_id %}">Back to blog</a></h5>
     <h2> Post {{ object.title }} in blog "BLABLA"</h2>
     <p>{{ object.text }}</p> <br/>

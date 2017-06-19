@@ -81,13 +81,16 @@ WSGI_APPLICATION = 'MySocialNetwork.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MYDATABASE',
+        'NAME': 'mySocialNetworkDataBase',
         'USER': 'avk',
-        'PASSWORD': 'qwerty228',
+        'PASSWORD': '228',
         'HOST': 'localhost',
     }
 }
 
+ACCOUNT_ACTIVATION_DAYS = 7
+
+AUTH_PROFILE_MODULE = 'user_profile.UserProfile'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
