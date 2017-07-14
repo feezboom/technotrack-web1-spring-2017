@@ -6,7 +6,6 @@ from core.models import MyAbstractModel
 
 
 class Blog(MyAbstractModel):
-
     title = models.CharField(max_length=255)
     description = models.TextField()
     rate = models.IntegerField()

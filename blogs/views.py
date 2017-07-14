@@ -1,6 +1,8 @@
 from django import forms
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
+from blogs.forms import BlogForm
 from blogs.models import Blog
 
 
@@ -49,3 +51,32 @@ class BlogsList(ListView):
 class BlogView(DetailView):
     queryset = Blog.objects.all()
     template_name = "blogs/blog.html"
+
+
+class UpdateBlog(UpdateView):
+    model = Blog
+    fields = ('title', 'description', 'rate')
+    success_url = reverse_lazy('core:blogs:show_all_blogs')
+
+
+class CreateBlog(CreateView):
+    model = Blog
+    # form_class = BlogForm
+    success_url = reverse_lazy('core:blogs:show_all_blogs')
+    # fields = '__all__'
+    fields = ('title', 'description')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.rate = 1
+        # form.instance.field['author'].widgets.update({'author': forms.HiddenInput()})
+        return super(CreateBlog, self).form_valid(form)
+    #
+    # def get_form(self, form_class=form_class):
+    #     initials = {
+    #         "author": self.request.user,
+    #         "rate": 0
+    #     }
+    #     form = form_class(initial=initials)
+    #     return form
+

@@ -3,10 +3,12 @@
 
 {% block content %}
     <h2> Here there are all blogs: </h2>
+    <br/>
     {% for blog in object_list %}
-        <b>{{ blog.id }}</b> <a href="{% url "core:blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a><br/>
+        <b>{{ forloop.counter }}</b> <a href="{% url "core:blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a>
+        Author: <b>{{ blog.author }}</b><br/>
     {% endfor %}
-
+    <h5><a href="{% url "core:blogs:create_blog" %}">Create new</a></h5>
     <h2>-----------------------------------------------------</h2>
 
     <div class="auth">
