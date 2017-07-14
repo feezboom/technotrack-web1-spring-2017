@@ -1,9 +1,11 @@
 from django import forms
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from blogs.forms import BlogForm
 from blogs.models import Blog
+from posts.models import Post
 
 
 class SortForm(forms.Form):
@@ -57,6 +59,11 @@ class UpdateBlog(UpdateView):
     model = Blog
     fields = ('title', 'description', 'rate')
     success_url = reverse_lazy('core:blogs:show_all_blogs')
+    template_name = "blogs/update_blog.html"
+
+    def get_queryset(self):
+        return super(UpdateBlog, self).get_queryset().\
+            filter(author=self.request.user)
 
 
 class CreateBlog(CreateView):
@@ -80,3 +87,15 @@ class CreateBlog(CreateView):
     #     form = form_class(initial=initials)
     #     return form
 
+
+def delete_blog(request, pk=None):
+    # todo : why pk=pk ?
+    blog_object = get_object_or_404(Blog, pk=pk)
+    posts = Post.objects.filter(blog_owner=blog_object)
+
+    for post in posts:
+        post.delete()
+    blog_object.delete()
+
+    # todo : gives error : template wasn't found.
+    return render(request, reverse_lazy('core:blogs:show_all_blogs'))

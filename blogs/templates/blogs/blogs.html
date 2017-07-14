@@ -5,8 +5,15 @@
     <h2> Here there are all blogs: </h2>
     <br/>
     {% for blog in object_list %}
-        <b>{{ forloop.counter }}</b> <a href="{% url "core:blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a>
-        Author: <b>{{ blog.author }}</b><br/>
+        <b>{{ forloop.counter }}</b>
+        <a href="{% url "core:blogs:show_blog_by_id" pk=blog.id %}">{{ blog.title }}</a>
+        Author: <b>{{ blog.author }}</b>
+        {% if blog.author == user %}
+            [<a href="{% url "core:blogs:update_blog" pk=blog.id %}">редактировать блог</a>]
+            &nbsp;
+            [<a href="{% url "core:blogs:delete_blog" pk=blog.id %}">удалить блог</a>]
+        {% endif %}
+        <br/>
     {% endfor %}
     <h5><a href="{% url "core:blogs:create_blog" %}">Create new</a></h5>
     <h2>-----------------------------------------------------</h2>

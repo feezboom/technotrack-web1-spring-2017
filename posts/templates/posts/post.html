@@ -4,6 +4,14 @@
     <h5><a href="{% url "core:blogs:show_blog_by_id" pk=object.blog_owner_id %}">Back to blog</a></h5>
     <h2> Post {{ object.title }} in blog "BLABLA"</h2>
     <p>{{ object.text }}</p> <br/>
+
+    <h5>Leave comment for this post: </h5> <br/>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save" />
+    </form>
+
     <h2>Comments ({{ object.comment_set.count }}):</h2>
     {% if object.comment_set %}
         {% for comment in object.comment_set.all %}
@@ -13,4 +21,6 @@
     {% else %}
         No comments to this post have been added yet.
     {% endif %}
+
+
 {% endblock %}

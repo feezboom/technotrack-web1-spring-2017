@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^blogs/', include('blogs.urls', namespace="blogs")),
     url(r'^posts/', include('posts.urls', namespace="posts")),
     url(r'^comments/', include('comments.urls', namespace="comments")),
-    url(r'^$', show_welcome_page),
+    url(r'^$', show_welcome_page, name="welcome_page"),
 
     url(r'^accounts/register/$',
         RegistrationView.as_view(form_class=User),

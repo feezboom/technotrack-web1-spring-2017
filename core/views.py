@@ -1,5 +1,6 @@
 from django import forms
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
 from blogs.models import Blog
 from comments.models import Comment
@@ -11,9 +12,10 @@ def show_welcome_page(request):
     posts_count = Post.objects.all().count()
     comments_count = Comment.objects.all().count()
     return \
-        render(request, "core/welcome.html", {"blogs_num": blogs_count,
-                                              "posts_num": posts_count,
-                                              "comments_num": comments_count})
+        render(request, reverse_lazy('core:welcome_page'), {
+                                            "blogs_num": blogs_count,
+                                            "posts_num": posts_count,
+                                            "comments_num": comments_count})
 
 
 def test(request, post_id=None, blog_id=None, *args, **kwargs):

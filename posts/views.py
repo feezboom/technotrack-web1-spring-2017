@@ -20,6 +20,7 @@ class CreatePost(CreateView):
     model = Post
     blog_owner_id = None
     blog_owner = None
+    # todo : fields = '__all__' and make author, blog owner fields hidden
     fields = ('title', 'text')
     template_name = 'posts/create_post.html'
 

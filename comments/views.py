@@ -1,13 +1,11 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from comments.models import Comment
 
 
-class CommentList(ListView):
-    queryset = Comment.objects.all()
-    template_name = "posts/post.html"
-
-
-class CommentView(DetailView):
-    queryset = Comment.objects.all()
-    template_name = "comments/comment.html"
+class CreateComment(CreateView):
+    model = Comment
+    post_owner_id = None
+    post_owner = None
+    # todo : fields = '__all__' and make author, blog owner fields hidden
+    fields = ['text']
